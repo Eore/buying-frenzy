@@ -1,0 +1,7 @@
+FROM golang:alpine
+RUN apk add make curl postgresql-client
+WORKDIR etl
+
+COPY . .
+RUN go mod download
+CMD make run-migrate
